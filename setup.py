@@ -15,7 +15,7 @@ setup(
     description="Differentiable contact-implicit trajectory optimization for planar manipulation",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/trajectory_opt_with_contact",
+    url="https://github.com/JPark-0624/trajectory_opt_with_contact.git",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",

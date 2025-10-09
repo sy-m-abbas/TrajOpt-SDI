@@ -74,21 +74,21 @@ contact_optimizer/
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/contact_optimizer.git
+git clone https://github.com/JPark-0624/trajectory_opt_with_contact.git
 cd contact_optimizer
 
 # Install package
 pip install -e .
 
 # Or install from GitHub directly
-pip install git+https://github.com/yourusername/contact_optimizer.git
+pip install git+https://github.com/JPark-0624/trajectory_opt_with_contact.git
 ```
 
 ### For Developers
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/contact_optimizer.git
+git clone https://github.com/JPark-0624/trajectory_opt_with_contact.git
 cd contact_optimizer
 
 # Install in editable mode with dev dependencies
@@ -210,4 +210,4 @@ MIT License - See LICENSE file for details.
 
 For questions or collaborations:
 - Email: your.email@example.com
-- GitHub Issues: https://github.com/yourusername/contact_optimizer/issues
+- GitHub Issues: https://github.com/JPark-0624/trajectory_opt_with_contact/issues
