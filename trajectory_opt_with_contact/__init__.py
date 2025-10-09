@@ -9,6 +9,7 @@ from .qp_solver import ContactQPSolver
 from .geometry import rot, closest_point_on_square_and_normal, contact_frame_and_J
 from .dynamics import step_square, rollout
 from .optimizer import TrajectoryOptimizer
+from .visualizer import TrajectoryVisualizer, visualize_result
 
 __version__ = "0.1.0"
 __all__ = [
@@ -18,5 +19,7 @@ __all__ = [
     "contact_frame_and_J",
     "step_square",
     "rollout",
-    "TrajectoryOptimizer"
+    "TrajectoryOptimizer",
+    "TrajectoryVisualizer",
+    "visualize_result",
 ]

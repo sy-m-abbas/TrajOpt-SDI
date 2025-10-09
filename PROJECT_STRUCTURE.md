@@ -3,31 +3,29 @@
 ## Directory Layout
 
 ```
-contact_optimizer/
+trajectory_opt_with_contact/
 ├── README.md                      # Main documentation
 ├── LICENSE                        # License file (MIT recommended)
 ├── setup.py                       # Package installation script
 ├── requirements.txt               # Dependencies
 ├── PROJECT_STRUCTURE.md          # This file
 │
-├── contact_optimizer/            # Main package directory
+├── trajectory_opt_with_contact/  # Main package directory
 │   ├── __init__.py              # Package initialization
 │   ├── qp_solver.py             # QP solver for contact forces
 │   ├── geometry.py              # Geometry utilities (rotation, closest point, etc.)
 │   ├── dynamics.py              # Time-stepping dynamics
-│   └── optimizer.py             # High-level trajectory optimizer API
+│   ├── optimizer.py             # High-level trajectory optimizer API
+│   └── visualizer.py            # Visualization tools (NEW)
 │
 ├── examples/                     # Example scripts
-│   ├── basic_pushing.py         # Simple pushing example
-│   ├── custom_cost.py           # Custom cost function example
-│   └── visualization.py         # Visualization utilities
+│   ├── simple_test.py           # Quick functionality test
+│   ├── visualize_example.py     # Full visualization example 1 (NEW)
+│   └── visualize_example2.py    # Full visualization example 2 (NEW)
 │
 ├── tests/                        # Unit tests
 │   ├── __init__.py
-│   ├── test_qp_solver.py
-│   ├── test_geometry.py
-│   ├── test_dynamics.py
-│   └── test_optimizer.py
+│   └── test_functionality.py
 │
 └── docs/                         # Additional documentation
     ├── api_reference.md
@@ -61,12 +59,24 @@ contact_optimizer/
 - `step_square(...)`: Single time-step integration with contact
 - `rollout(...)`: Full trajectory simulation with cost computation
 
-### `contact_optimizer/optimizer.py`
-**Class: `TrajectoryOptimizer`**
-- High-level API for trajectory optimization
+### `trajectory_opt_with_contact/visualizer.py`
+**Class: `TrajectoryVisualizer`**
+- Visualization utilities for optimization results
 - Key methods:
-  - `__init__(mass, side_length, mu, horizon, dt, device)`: Setup
-  - `optimize(q0, v0, pusher0, goal, ...)`: Run optimization
+  - `__init__(half_size)`: Initialize visualizer
+  - `plot_trajectory(result, goal, xlim, ylim, ...)`: Plot trajectory analysis
+  - `animate_trajectory(result, goal, obstacle_pos, ...)`: Create animation
+  - `plot_analysis(result, ...)`: Detailed analysis plots
+
+**Function: `visualize_result(...)`**
+- Convenience function to generate all visualizations at once
+- Creates trajectory plot, animation, and analysis plots
+
+### `examples/`
+**Example scripts demonstrating package usage:**
+- `simple_test.py`: Quick functionality test (short horizon, fast)
+- `visualize_example.py`: Complete example with visualization (Goal 1 with obstacle)
+- `visualize_example2.py`: Alternative configuration (Goal 2 with different obstacle)
 
 ## Installation Instructions
 
@@ -140,6 +150,7 @@ Users can extend the package by:
 - Subclassing `TrajectoryOptimizer` for custom cost functions
 - Using low-level functions to build custom dynamics
 - Implementing new contact models by modifying QP constraints
+- Customizing visualization with `TrajectoryVisualizer` class
 
 ## Sharing with Other Labs
 
@@ -210,4 +221,4 @@ MIT License - See LICENSE file for details.
 
 For questions or collaborations:
 - Email: your.email@example.com
-- GitHub Issues: https://github.com/JPark-0624/trajectory_opt_with_contact/issues
+- GitHub Issues: https://github.com/yourusername/contact_optimizer/issues
