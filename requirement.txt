@@ -1,0 +1,5 @@
+torch>=1.10.0
+numpy>=1.20.0
+cvxpy>=1.2.0
+cvxpylayers>=0.1.5
+matplotlib>=3.3.0
