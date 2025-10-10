@@ -32,7 +32,7 @@ v0 = [0.0, 0.0, 0.0]
 pusher0 = [0.3, -0.3]
 goal = [-0.2, 0.5, -0.3]
 obstacle = [0.2, -0.2]  # Obstacle position from original code
-u_init = [[0.2, -0.2]] * optimizer.horizon  # Initial guess from original code
+u_init = [[-0.2, 0.2]] * optimizer.horizon  # Initial guess from original code
 
 
 print(f"\nInitial pose: {q0}")

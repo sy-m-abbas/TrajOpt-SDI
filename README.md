@@ -31,9 +31,10 @@ pip install -e .
 ## Quick Start
 
 ### Basic Usage
+Execute trajectory optimization and visualize the result
 
 ```python
-from trajectory_opt_with_contact import TrajectoryOptimizer
+from trajectory_opt_with_contact import TrajectoryOptimizer, visualize_result
 
 # Create optimizer
 optimizer = TrajectoryOptimizer(
@@ -55,25 +56,6 @@ result = optimizer.optimize(
     lr=0.01                    # Learning rate
 )
 
-print("Final position:", result['q_final'])
-print("Final loss:", result['loss'])
-```
-
-### With Visualization
-
-```python
-from trajectory_opt_with_contact import TrajectoryOptimizer, visualize_result
-
-# Create and run optimizer
-optimizer = TrajectoryOptimizer(horizon=60, device='cuda')
-result = optimizer.optimize(
-    q0=[0.0, 0.0, 0.0],
-    v0=[0.0, 0.0, 0.0],
-    pusher0=[0.3, -0.3],
-    goal=[-0.2, 0.5, -0.3],
-    max_iters=100
-)
-
 # Generate visualizations
 visualize_result(
     result, 
@@ -84,6 +66,9 @@ visualize_result(
     ylim=(-1, 1)
 )
 # Creates: trajectory.png, analysis.png, animation.mp4
+
+print("Final position:", result['q_final'])
+print("Final loss:", result['loss'])
 ```
 
 ### Running Examples
@@ -162,46 +147,6 @@ Returns a dictionary with:
 - `'contact_forces'`: Contact force history (T, 2)
 - `'signed_distances'`: Signed distance history (T,)
 
-### TrajectoryVisualizer
-
-Visualization utilities for results.
-
-```python
-from trajectory_opt_with_contact import TrajectoryVisualizer
-
-viz = TrajectoryVisualizer(half_size=0.1)
-
-# Plot trajectory analysis
-viz.plot_trajectory(result, goal, save_path='trajectory.png',
-                   xlim=(-1, 1), ylim=(-1, 1))
-
-# Create animation
-viz.animate_trajectory(result, goal, save_path='animation.mp4',
-                      fps=60, obstacle_pos=[0.2, -0.2])
-
-# Detailed analysis plots
-viz.plot_analysis(result, save_path='analysis.png')
-```
-
-### Convenience Function
-
-```python
-from trajectory_opt_with_contact import visualize_result
-
-# Generate all visualizations at once
-visualize_result(
-    result, 
-    goal, 
-    half_size=0.1,
-    save_trajectory='trajectory.png',
-    save_animation='animation.mp4',
-    save_analysis='analysis.png',
-    obstacle_pos=[0.2, -0.2],
-    xlim=(-1, 1),
-    ylim=(-1, 1)
-)
-```
-
 ### Low-Level API
 
 For custom implementations:
@@ -264,12 +209,9 @@ trajectory_opt_with_contact/
 │   ├── qp_solver.py                # Differentiable QP solver
 │   ├── geometry.py                 # Geometry utilities
 │   ├── dynamics.py                 # Physics simulation
-│   ├── optimizer.py                # High-level optimizer
-│   └── visualizer.py               # Visualization tools
+│   └── optimizer.py                # High-level optimizer
 ├── examples/                       # Usage examples
-│   ├── simple_test.py              # Quick test
-│   ├── visualize_example.py        # Full visualization example 1
-│   └── visualize_example2.py       # Full visualization example 2
+│   └── simple_test.py              # Basic example
 ├── tests/                          # Test files
 │   └── test_functionality.py       # Functionality tests
 ├── setup.py                        # Installation script
